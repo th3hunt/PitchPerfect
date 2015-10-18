@@ -64,13 +64,13 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
     func stopAudio() {
         stopButton.hidden = true
         audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
     }
 
     func playAudio(rate rate: Float) {
         do {
-            
-            audioPlayer.stop()
-            audioEngine.stop()
+            stopAudio()
             audioPlayer.currentTime = 0.0
             audioPlayer.rate = rate
             if !audioPlayer.play() {
@@ -84,9 +84,7 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     func playAudioWithVariablePitch(pitch: Float){
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        stopAudio()
         
         let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
@@ -94,17 +92,22 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         let changePitchEffect = AVAudioUnitTimePitch()
         changePitchEffect.pitch = pitch
         audioEngine.attachNode(changePitchEffect)
-        
+
         audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
         audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
         
-        audioPlayerNode.scheduleFile(audioFile, atTime: nil) { [unowned self] () in
-            self.stopButton.hidden = true
-        }
-        
         try! audioEngine.start()
+
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil,
+            completionHandler: { () -> Void in
+            self.stopButton.hidden = true
+            // May be executed prior to sound finish playing
+            // http://stackoverflow.com/questions/29427253/completionhandler-of-avaudioplayernode-schedulefile-is-called-too-early
+            // http://www.openradar.me/22873794
+        })
         
         audioPlayerNode.play()
+        stopButton.hidden = false
     }
 
     
