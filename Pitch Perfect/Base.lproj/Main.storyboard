@@ -38,9 +38,18 @@
                                     <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NIr-xM-vvM"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaG-DU-GJ1">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="TaG-DU-GJ1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0dS-Bf-SpY"/>
                             <constraint firstItem="lSx-0T-mjW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2wn-jS-Hnq"/>
+                            <constraint firstItem="TaG-DU-GJ1" firstAttribute="centerY" secondItem="LMV-zR-eKv" secondAttribute="centerY" id="4ds-aL-eTv"/>
                             <constraint firstItem="LMV-zR-eKv" firstAttribute="top" secondItem="lSx-0T-mjW" secondAttribute="bottom" constant="20" id="7Hy-wa-bdf"/>
                             <constraint firstItem="lSx-0T-mjW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ctr-AT-n0K"/>
                             <constraint firstItem="LMV-zR-eKv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dde-VX-frW"/>
@@ -59,18 +68,21 @@
                             <mask key="subviews">
                                 <exclude reference="LMV-zR-eKv"/>
                                 <exclude reference="RiW-TH-Bpl"/>
+                                <exclude reference="TaG-DU-GJ1"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Ir5-cO-Cg1"/>
-                                <exclude reference="NCY-yp-a7m"/>
-                                <exclude reference="koO-ee-cEl"/>
-                                <exclude reference="7Hy-wa-bdf"/>
-                                <exclude reference="Dde-VX-frW"/>
                                 <exclude reference="2wn-jS-Hnq"/>
                                 <exclude reference="Ctr-AT-n0K"/>
                                 <exclude reference="H6f-sT-QM8"/>
                                 <exclude reference="hMw-gC-dgf"/>
                                 <exclude reference="mcm-ek-NTq"/>
+                                <exclude reference="7Hy-wa-bdf"/>
+                                <exclude reference="Dde-VX-frW"/>
+                                <exclude reference="0dS-Bf-SpY"/>
+                                <exclude reference="4ds-aL-eTv"/>
+                                <exclude reference="Ir5-cO-Cg1"/>
+                                <exclude reference="NCY-yp-a7m"/>
+                                <exclude reference="koO-ee-cEl"/>
                                 <exclude reference="GFw-cy-qIe"/>
                             </mask>
                         </variation>
@@ -78,25 +90,29 @@
                             <mask key="subviews">
                                 <include reference="LMV-zR-eKv"/>
                                 <include reference="RiW-TH-Bpl"/>
+                                <include reference="TaG-DU-GJ1"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Ir5-cO-Cg1"/>
-                                <include reference="NCY-yp-a7m"/>
-                                <exclude reference="koO-ee-cEl"/>
-                                <include reference="7Hy-wa-bdf"/>
-                                <include reference="Dde-VX-frW"/>
                                 <include reference="2wn-jS-Hnq"/>
                                 <exclude reference="Ctr-AT-n0K"/>
                                 <exclude reference="H6f-sT-QM8"/>
                                 <exclude reference="JF3-Td-WZQ"/>
                                 <exclude reference="hMw-gC-dgf"/>
                                 <include reference="mcm-ek-NTq"/>
+                                <include reference="7Hy-wa-bdf"/>
+                                <include reference="Dde-VX-frW"/>
+                                <include reference="0dS-Bf-SpY"/>
+                                <include reference="4ds-aL-eTv"/>
+                                <exclude reference="Ir5-cO-Cg1"/>
+                                <include reference="NCY-yp-a7m"/>
+                                <exclude reference="koO-ee-cEl"/>
                                 <include reference="GFw-cy-qIe"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Record Sound" id="lCn-px-4xX"/>
                     <connections>
+                        <outlet property="promptToRecord" destination="TaG-DU-GJ1" id="Ggq-yw-IWc"/>
                         <outlet property="recordButton" destination="lSx-0T-mjW" id="d7l-KE-Rwh"/>
                         <outlet property="recordingInProgress" destination="LMV-zR-eKv" id="KeR-XI-3Iw"/>
                         <outlet property="stopButton" destination="RiW-TH-Bpl" id="CxR-lo-C19"/>
@@ -155,6 +171,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Qv1-Wj-n93" firstAttribute="centerX" secondItem="jFe-Al-Lnb" secondAttribute="centerX" id="4QR-aL-5Lx"/>
                             <constraint firstItem="4mN-BN-4n5" firstAttribute="top" secondItem="bS5-eh-dDz" secondAttribute="bottom" constant="60" id="8hA-XS-8fC"/>
